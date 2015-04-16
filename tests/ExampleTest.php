@@ -58,6 +58,7 @@ class ExampleTest extends TestCase {
 		$this->assertEquals('123 Pass 30.04.15', $response->getContent());
 
 	}
+
 	/**
 	 * A basic functional test example.
 	 *
@@ -77,6 +78,28 @@ class ExampleTest extends TestCase {
 
 		$this->assertEquals(200, $response->getStatusCode());
 		$this->assertEquals('2953799 (3086682)  RP, WS, KV  26.06.2015 ', $response->getContent());
+
+	}
+
+	/**
+	 * A basic functional test example.
+	 *
+	 * @return void
+	 */
+	public function testCheckNotFound()
+	{
+		app('redis')->shouldReceive('get')->andReturn(null);
+		app('redis')->shouldReceive('set')->andReturn(null);
+
+		$stream = new \GuzzleHttp\Stream\BufferStream();
+		$stream->write(file_get_contents(__DIR__.'/fixtures/fixture.pdf'));
+
+		app('guzzle')->shouldReceive('get')->andReturn(new GuzzleHttp\Message\Response(200, ['X-Foo' => 'Bar'], $stream));
+
+		$response = $this->call('GET', '/1000000');
+
+		$this->assertEquals(200, $response->getStatusCode());
+		$this->assertEquals('Id not found', $response->getContent());
 
 	}
 
