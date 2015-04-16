@@ -45,9 +45,4 @@ class CheckController extends Controller
 
 
     }
-
-    protected function getKey($id)
-    {
-        return sprintf("gde_re_s_%d", $id);
-    }
 }
