@@ -19,6 +19,8 @@ deployment:
   staging:
     branch: master
     commands:
+      - git add .
+      - git commit -m "assets added"
       - heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php --app visa-status
       - heroku maintenance:on --app visa-status
       - heroku ps:scale web=0 --app visa-status
