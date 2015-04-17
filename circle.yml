@@ -14,5 +14,13 @@ test:
 deployment:
   staging:
     branch: master
+    commands:
+      - bower install
+      - ./node_modules/.bin/gulp
+      - rm -rf /node_modules
+      - rm -rf resources/assets/vendor
+      - rm -rf package.json
+      - rm -rf bower.json
+      - composer install --no-dev
     heroku:
       appname: visa-status
