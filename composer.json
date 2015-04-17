@@ -5,10 +5,12 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
+		"php": "~5.5",
 		"laravel/framework": "5.0.*",
 		"kozz/laravel-guzzle-provider": "~1.0",
 		"predis/predis":"~1.0",
-		"smalot/pdfparser":"~0.9"
+		"smalot/pdfparser":"~0.9",
+		"heroku/heroku-buildpack-php":"*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

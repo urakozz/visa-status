@@ -11,15 +11,16 @@ test:
     - vendor/bin/phpunit --debug --coverage-clover build/logs/clover.xml
   post:
     - vendor/bin/test-reporter
+    - ./node_modules/.bin/bower install
+    - ./node_modules/.bin/gulp
+    - rm -rf node_modules/
+    - rm -rf package.json
 deployment:
   staging:
     branch: master
     commands:
-      - ./node_modules/.bin/bower install
-      - ./node_modules/.bin/gulp
-      - rm -rf /node_modules
-      - rm -rf /vendor
-      - rm -rf resources/assets/vendor
-      - rm -rf package.json
-      - rm -rf bower.json
+      - heroku maintenance:on --app visa-status
+      - heroku scale worker=0 --app visa-status
       - git push git@heroku.com:visa-status.git $CIRCLE_SHA1:master
+      - heroku scale worker=1 --app visa-status
+      - heroku maintenance:off --app visa-status
