@@ -19,6 +19,8 @@ deployment:
   staging:
     branch: master
     commands:
+      - git config --global user.email "urakozz@circleci.com"
+      - git config --global user.name "Circle CI Builder"
       - git add .
       - git commit -m "assets added"
       - heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php --app visa-status
