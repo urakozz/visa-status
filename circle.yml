@@ -22,5 +22,4 @@ deployment:
       - rm -rf package.json
       - rm -rf bower.json
       - composer install --no-dev
-    heroku:
-      appname: visa-status
+      - git push git@heroku.com:visa-status.git $CIRCLE_SHA1:master
