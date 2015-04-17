@@ -18,6 +18,7 @@ deployment:
       - ./node_modules/.bin/bower install
       - ./node_modules/.bin/gulp
       - rm -rf /node_modules
+      - rm -rf /vendor
       - rm -rf resources/assets/vendor
       - rm -rf package.json
       - rm -rf bower.json
