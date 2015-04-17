@@ -15,7 +15,7 @@ deployment:
   staging:
     branch: master
     commands:
-      - bower install
+      - ./node_modules/.bin/bower install
       - ./node_modules/.bin/gulp
       - rm -rf /node_modules
       - rm -rf resources/assets/vendor
