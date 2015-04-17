@@ -19,7 +19,7 @@ deployment:
   staging:
     branch: master
     commands:
-      - heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php
+      - heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php --app visa-status
       - heroku maintenance:on --app visa-status
       - heroku ps:scale web=0 --app visa-status
       - git push git@heroku.com:visa-status.git $CIRCLE_SHA1:master
