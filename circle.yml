@@ -20,7 +20,7 @@ deployment:
     branch: master
     commands:
       - heroku maintenance:on --app visa-status
-      - heroku scale worker=0 --app visa-status
+      - heroku ps:scale web=0 --app visa-status
       - git push git@heroku.com:visa-status.git $CIRCLE_SHA1:master
-      - heroku scale worker=1 --app visa-status
+      - heroku ps:scale web=1 --app visa-status
       - heroku maintenance:off --app visa-status
