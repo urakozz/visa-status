@@ -9,8 +9,7 @@
 		"laravel/framework": "5.0.*",
 		"kozz/laravel-guzzle-provider": "~1.0",
 		"predis/predis":"~1.0",
-		"smalot/pdfparser":"~0.9",
-		"heroku/heroku-buildpack-php":"*"
+		"smalot/pdfparser":"~0.9"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
@@ -18,7 +17,8 @@
 		"filp/whoops": "~1.0",
 		"barryvdh/laravel-ide-helper": "~2.0",
 		"mockery/mockery":"~0.9.0",
-		"codeclimate/php-test-reporter": "dev-master"
+		"codeclimate/php-test-reporter": "dev-master",
+		"heroku/heroku-buildpack-php":"*"
 	},
 	"autoload": {
 		"classmap": [
