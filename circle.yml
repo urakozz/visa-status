@@ -22,5 +22,4 @@ deployment:
       - rm -rf resources/assets/vendor
       - rm -rf package.json
       - rm -rf bower.json
-      - composer install --no-dev --no-interaction
       - git push git@heroku.com:visa-status.git $CIRCLE_SHA1:master
