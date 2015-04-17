@@ -11,3 +11,8 @@ test:
     - vendor/bin/phpunit --debug --coverage-clover build/logs/clover.xml
   post:
     - vendor/bin/test-reporter
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: visa-status
