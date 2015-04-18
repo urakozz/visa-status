@@ -7,7 +7,7 @@ class ExampleTest extends TestCase {
 	public function setUp()
 	{
 		parent::setUp();
-		$redis = \Mockery::mock('Illuminate\Redis\Database[get, set]');
+		$redis = \Mockery::mock(Illuminate\Redis\Database::class.'[get, set]');
 		\Illuminate\Container\Container::getInstance()->offsetSet('redis', $redis);
 		$guzzle = \Mockery::mock(\GuzzleHttp\Client::class.'[get]');
 		\Illuminate\Container\Container::getInstance()->offsetSet('guzzle', $guzzle);
