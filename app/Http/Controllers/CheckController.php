@@ -27,7 +27,7 @@ class CheckController extends Controller
 
     public function __construct()
     {
-        $this->retriever = new Retriever(Guzzle::getFacadeRoot(), new StorageAdapter(\Redis::getFacadeRoot()));
+        $this->retriever = new Retriever(Guzzle::getFacadeRoot(), new StorageAdapter(\Cache::getFacadeRoot()));
     }
 
     public function index($id = null)

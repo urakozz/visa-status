@@ -13,6 +13,7 @@
 namespace App\Components;
 
 
+use Illuminate\Cache\CacheManager;
 use Illuminate\Redis\Database;
 
 class StorageAdapter
@@ -22,14 +23,14 @@ class StorageAdapter
      */
     protected $redis;
 
-    public function __construct(Database $redis)
+    public function __construct(CacheManager $redis)
     {
         $this->redis = $redis;
     }
 
     public function set($id, $data)
     {
-        $this->redis->set($this->getKey($id), $data);
+        $this->redis->forever($this->getKey($id), $data);
     }
 
     public function get($id)
@@ -39,6 +40,6 @@ class StorageAdapter
 
     protected function getKey($id)
     {
-        return sprintf("gde_re_s_%d", $id);
+        return sprintf("gde_re_s_%s", $id);
     }
 }
