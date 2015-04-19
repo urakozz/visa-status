@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"php": ">=5.5",
+		"php": "~5.4|~7.0",
 		"laravel/framework": "~5.0.0",
 		"kozz/laravel-guzzle-provider": "~1.0",
 		"predis/predis":"~1.0",
