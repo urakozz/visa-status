@@ -25,7 +25,6 @@ test:
     - vendor/bin/test-reporter
     - bower install
     - gulp
-    - sed -i -e 's/\/node_modules//' .gitignore
     - git config user.name "circleci"
     - git config user.email "urakozz@circleci.com"
     - git add -A
@@ -35,12 +34,10 @@ deployment:
   staging:
     branch: master
     commands:
-      - echo ${CIRCLE_BRANCH}
-      - echo $CIRCLE_SHA1
-      - echo ${CIRCLE_PROJECT_REPONAME}
+      - echo ${CIRCLE_SHA1}:${CIRCLE_BRANCH}
       - heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php --app visa-status
       - heroku maintenance:on --app visa-status
       - heroku ps:scale web=0 --app visa-status
-      - git push -f git@heroku.com:visa-status.git $CIRCLE_SHA1:master
+      - git push -f git@heroku.com:${CIRCLE_PROJECT_REPONAME}.git ${CIRCLE_BRANCH}:master
       - heroku ps:scale web=1 --app visa-status
       - heroku maintenance:off --app visa-status
