@@ -146,7 +146,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 		\Kozz\Laravel\Providers\Guzzle::class,
 
-		env('APP_DEBUG', false) ? \Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class : null
+		'local' === env('APP_ENV') ? \Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class : null
 
 	]),
 
