@@ -3,31 +3,44 @@ machine:
     version: 5.5.11
   node:
     version: 0.10.38
+  environment:
+    PATH: ${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin
+    TZ: Europe/Berlin
+
+general:
+  artifacts:
+    - build/logs/clover.xml
+
 dependencies:
   pre:
     - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
+  cache_directories:
+    - node_modules
+    - vendor
+
 test:
   override:
     - vendor/bin/phpunit --debug --coverage-clover build/logs/clover.xml
   post:
     - vendor/bin/test-reporter
-    - ./node_modules/.bin/bower install
-    - ./node_modules/.bin/gulp
-    - rm -rf node_modules/
-    - rm -rf package.json
+    - bower install
+    - gulp
+    - sed -i -e 's/\/node_modules//' .gitignore
+    - git config user.name "circleci"
+    - git config user.email "urakozz@circleci.com"
+    - git add -A
+    - git commit -m "build"
+
 deployment:
   staging:
     branch: master
     commands:
-      - git config --global user.email "urakozz@circleci.com"
-      - git config --global user.name "Circle CI Builder"
-      - git status
-      - git add .
-      - git status
-      - git commit -m "assets added"
+      - echo ${CIRCLE_BRANCH}
+      - echo $CIRCLE_SHA1
+      - echo ${CIRCLE_PROJECT_REPONAME}
       - heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php --app visa-status
       - heroku maintenance:on --app visa-status
       - heroku ps:scale web=0 --app visa-status
-      - git push git@heroku.com:visa-status.git $CIRCLE_SHA1:master
+      - git push -f git@heroku.com:visa-status.git $CIRCLE_SHA1:master
       - heroku ps:scale web=1 --app visa-status
       - heroku maintenance:off --app visa-status
