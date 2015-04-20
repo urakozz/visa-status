@@ -1,48 +1,18 @@
-<html>
-	<head>
-		<title>Laravel</title>
-		
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+@extends('layout.promo')
+@section('content')
+    <div class="promo-container_title">Your Visa Status here</div>
+    <div class="promo-container_quote promo-container_quote__padding">
+        Check if your German National Visa ready
+    </div>
+    <div class="promo-container_form">
+        <?=Form::open(array('url' => '/')) ?>
+        <div class="input-group">
+            <input name="id" type="text" class="form-control promo-input_field" placeholder="Barcode Eg.: 3132727">
+            <span class="input-group-btn">
+                <button role="button" class="btn btn-success btn-lg" type="submit">Check Now</button>
+            </span>
+        </div>
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
-
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
-
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
-
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
-
-			.quote {
-				font-size: 24px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="content">
-				<div class="title">Laravel 5</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
-			</div>
-		</div>
-	</body>
-</html>
+        <?=Form::close() ?>
+    </div>
+@stop
