@@ -3,6 +3,7 @@
   "devDependencies": {
     "gulp": "^3.8.11",
     "laravel-elixir": "*",
-    "bower": "*"
+    "bower": "*",
+    "gulp-sass":"1.2.4"
   }
 }

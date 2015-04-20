@@ -15,7 +15,6 @@ dependencies:
   pre:
     - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
   cache_directories:
-    - node_modules
     - vendor
 
 test:
