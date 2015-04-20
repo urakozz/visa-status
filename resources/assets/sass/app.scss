@@ -42,12 +42,55 @@ body {
       @media (min-width: $screen-sm-min) {
         width: 33%;
       }
+      &__padding{
+        padding-top: 2rem ;
+        padding-bottom: 4rem ;
+      }
     }
   }
 
   &-input{
     &_field{
       height: 45px;
+    }
+  }
+}
+
+.result-status {
+  &_title{
+    font-size: 96px;
+    margin-bottom: 40px;
+
+    &__red {
+      color: rgb(150, 31, 30);
+    }
+    &__green {
+      color: rgb(54, 150, 44);
+    }
+  }
+  &_description{
+    color: rgb(45, 47, 48);
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    @media (min-width: $screen-sm-min) {
+      width: 55%;
+    }
+
+    .description-summary{
+      font-size: 27px;
+    }
+    .description-details{
+      text-align: left;
+      font-size: 20px;
+      font-family: Helvetica, Helvetica Neue, Arial;
+      padding-top: 2rem;
+    }
+    .description-additional{
+      text-align: left;
+      font-family: Helvetica, Helvetica Neue, Arial;
+      padding-top: 2rem ;
+      padding-bottom: 1rem ;
     }
   }
 }

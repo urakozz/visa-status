@@ -13,6 +13,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Components\ResultContainer\ResultContainer;
 use App\Components\Retriever;
 use App\Components\StorageAdapter;
 use Kozz\Laravel\Facades\Guzzle;
@@ -32,16 +33,23 @@ class CheckController extends Controller
 
     public function index($id = null)
     {
-        $id = (int)$id;
-        if (!$id) {
-            return response("Empty id");
+        $id = (int) $id;
+        try {
+            if (!$id) {
+                throw new \DomainException("Empty Id", 503);
+            }
+            $data = $this->retriever->lookForId($id);
+            if (!$data) {
+                throw new \DomainException("Id Not Found", 404);
+            }
+            $result = new ResultContainer($data);
+        } catch (\DomainException $e) {
+            $result = new ResultContainer($e->getMessage(), $e->getCode());
+        } finally {
+            $result->setId($id);
         }
 
-        if ($data = $this->retriever->lookForId($id, true)) {
-            return response($data);
-        }
-
-        return response("Id not found");
+        return view('result', ['data' => $result]);
 
 
     }
