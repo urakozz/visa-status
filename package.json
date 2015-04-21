@@ -1,9 +1,14 @@
 {
+  "name":"visa_status",
+  "version":"1.0.0",
   "private": true,
   "devDependencies": {
     "gulp": "^3.8.11",
     "laravel-elixir": "*",
     "bower": "*",
     "gulp-sass":"*"
+  },
+  "scripts":{
+    "postinstall":"npm prune && npm shrinkwrap --dev"
   }
 }
