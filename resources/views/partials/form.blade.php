@@ -1,4 +1,4 @@
-<?=Form::open(array('url' => URL::to('/', [], env('production')))) ?>
+<?=Form::open(array('url' => URL::to('/', [], 'production' === env('APP_ENV')))) ?>
 <div class="input-group">
     <input name="id" type="text" class="form-control promo-input_field" placeholder="Barcode Eg.: 3132727">
     <span class="input-group-btn">
