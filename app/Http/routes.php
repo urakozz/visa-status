@@ -13,5 +13,5 @@
 
 Route::get('/', 'WelcomeController@index');
 Route::post('/', 'WelcomeController@resolve');
-Route::get('/{id}', 'CheckController@index');
 Route::get('/brutal', 'CheckController@brutal');
+Route::get('/{id}', 'CheckController@index')->where(['id' => '[0-9]+']);
