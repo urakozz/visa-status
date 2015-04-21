@@ -68,8 +68,11 @@ body {
 
 .result-status {
   &_title{
-    font-size: 96px;
+    font-size: 30px;
     margin-bottom: 40px;
+    @media (min-width: $screen-sm-min) {
+      font-size: 96px;
+    }
 
     &__red {
       color: rgb(150, 31, 30);
