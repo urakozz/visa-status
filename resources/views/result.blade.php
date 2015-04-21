@@ -37,7 +37,8 @@
             </div>
         @else
             <div class="description-summary">
-                <p>Check your number <b>{{$data->getId()}}</b> is correct or try later
+                <p>Unfortunately, there is no information about your visa.
+                <p>Check your number <b>{{$data->getId()}}</b> is correct or try later.
             </div>
 
         @endif
