@@ -24,7 +24,7 @@ class ResultContainer
 
     protected $statusMessage = [
         200 => "Your visa is ready",
-        404 => "Your visa result not found",
+        404 => "Your visa result is not found",
         503 => "Invalid number",
     ];
     protected $statusColors  = [
