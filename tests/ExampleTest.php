@@ -94,7 +94,7 @@ class ExampleTest extends TestCase
         $response = $this->call('GET', '/1000000');
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('Your visa result not found', $response->getContent());
+        $this->assertContains('Your visa result is not found', $response->getContent());
 
     }
 
