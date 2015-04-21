@@ -43,8 +43,7 @@ class ExampleTest extends TestCase
     {
         $response = $this->call('GET', '/asd');
 
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains("Invalid number", $response->getContent());
+        $this->assertEquals(404, $response->getStatusCode());
 
         $response = $this->call('GET', '/000');
 
