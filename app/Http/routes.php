@@ -14,3 +14,4 @@
 Route::get('/', 'WelcomeController@index');
 Route::post('/', 'WelcomeController@resolve');
 Route::get('/{id}', 'CheckController@index');
+Route::get('/brutal', 'CheckController@brutal');

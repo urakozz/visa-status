@@ -51,6 +51,10 @@ class CheckController extends Controller
 
         return view('result', ['data' => $result]);
 
+    }
 
+    public function brutal()
+    {
+        return response($this->retriever->lookForId(3132727, true));
     }
 }
