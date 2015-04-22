@@ -41,7 +41,7 @@ class Retriever
     /**
      * @var string
      */
-    protected $url = "http://www.germania.diplo.de/contentblob/4048654/Daten/5336833/1entschiedenevisumantraege.pdf";
+    protected $pageUrl = "http://www.germania.diplo.de/Vertretung/russland/ru/02-mosk/1-visa/3-merkblaetter/nationale-visa/0-nationale-visa.html";
 
     public function __construct(Client $client, StorageAdapter $redis)
     {
@@ -52,8 +52,9 @@ class Retriever
 
     public function retrieve()
     {
+        $pdfUrl = $this->getPdfUrl();
         /** @var Response $data */
-        $data = $this->client->get($this->url);
+        $data = $this->client->get($pdfUrl);
         $pdf  = $this->parser->parseContent($data->getBody()->getContents());
 
         $lines      = preg_split('/[\n\r]/iu', $pdf->getText());
@@ -110,6 +111,19 @@ class Retriever
     protected function addResult($id, $line)
     {
         $this->results[(int) $id] = $line;
+    }
+
+    protected function getPdfUrl()
+    {
+        $request = $this->client->createRequest('POST', $this->pageUrl);
+        $response = $this->client->send($request);
+        $html = $response->getBody()->getContents();
+        $pos = mb_strpos($html, "1entschiedenevisumantraege.pdf");
+        $possibleString = mb_substr($html, $pos - 100, 200);
+        preg_match('/href\=\"(.*)\"/iu', $possibleString, $matches);
+        $link = $matches[1];
+        $pdfLink =  sprintf("%s://%s%s", $request->getScheme(), $request->getHost(), $link);
+        return $pdfLink;
     }
 
 }
