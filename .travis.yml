@@ -19,7 +19,7 @@ deploy:
   password:
     secure: KnZqyaTVrpWR6BgvEq9wgknkOpBn1W2S6XorHmaS5MLjeBdp12nC+gJTBNY1VmuXwQBfiwpfYQ9pqp0EqC2gLY6k8lkpWLpbklRM8ZVA/sKznD0563H0LCnAbpw181KSgDfeh/n8+uwobjuSpIipjXG6MFIYmzLzUQA0GeqryY4=
   app: php
-  domain: php-kozz.rhcloud.com
+  domain: php-kozz
   on:
     repo: urakozz/visa-status
   skip_cleanup: true
