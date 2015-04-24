@@ -45,7 +45,7 @@ class CheckController extends Controller
             }
             $result = new ResultContainer($data);
         } catch (ConnectionException $e) {
-            $result = new ResultContainer($e->getMessage(), $e->getCode());
+            $result = new ResultContainer($e->getMessage(), 503);
         } catch (\DomainException $e) {
             $result = new ResultContainer($e->getMessage(), $e->getCode());
         }

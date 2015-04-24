@@ -17,10 +17,10 @@ before_script:
 
 script: vendor/bin/phpunit
 
-after_script:
-   - npm install
-   - bower install
-   - node_modules/.bin/gulp
+#after_script:
+#   - npm install
+#   - bower install
+#   - node_modules/.bin/gulp
 
 after_success:
    - git config user.name "shippable"
