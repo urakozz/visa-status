@@ -36,8 +36,8 @@ class RetrieverTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->guzzle    = \Mockery::mock(\GuzzleHttp\Client::class . '[get]');
-        $this->storage   = $this->getMockBuilder(\App\Components\StorageAdapter::class)
+        $this->guzzle    = \Mockery::mock('GuzzleHttp\Client[get]');
+        $this->storage   = $this->getMockBuilder('App\Components\StorageAdapter')
             ->disableOriginalConstructor()
             ->getMock();
         $this->retriever = new \App\Components\Retriever($this->guzzle, $this->storage);

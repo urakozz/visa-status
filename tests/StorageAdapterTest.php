@@ -26,7 +26,7 @@ class StorageAdapterTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->handler = $this->getMockBuilder(Illuminate\Redis\Database::class)
+        $this->handler = $this->getMockBuilder('Illuminate\Redis\Database')
             ->disableOriginalConstructor()
             ->setMethods(['__call'])
             ->getMock();

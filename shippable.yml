@@ -22,7 +22,6 @@ after_script:
    - bower install
    - node_modules/.bin/gulp
 
-
 after_success:
    - git config user.name "shippable"
    - git config user.email "urakozz@shippable.com"

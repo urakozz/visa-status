@@ -145,9 +145,9 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-		\Kozz\Laravel\Providers\Guzzle::class,
+		'Kozz\Laravel\Providers\Guzzle',
 
-		'local' === env('APP_ENV') ? \Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class : null
+		'local' === env('APP_ENV') ? 'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider' : null
 
 	]),
 
