@@ -12,8 +12,7 @@ before_install:
   - cat ~/.ssh/id_rsa.pub
 
 before_script:
-  - sudo apt-get update
-  - sudo apt-get install npm
+  - npm -v
   - composer self-update
   - composer install --no-interaction
   - mkdir -p shippable/codecoverage
