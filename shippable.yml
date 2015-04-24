@@ -7,6 +7,10 @@ env:
   global:
     - OPENSHIFT_REPO=ssh://55390582e0b8cd11060000ab@php-kozz.rhcloud.com/~/git/php.git/
 
+before_install:
+  - git remote -v | grep ^openshift || git remote add openshift $OPENSHIFT_REPO
+  - cat ~/.ssh/id_rsa.pub
+
 before_script:
    - composer self-update
    - composer install --no-interaction
@@ -14,15 +18,14 @@ before_script:
 script: vendor/bin/phpunit
 
 after_script:
+   - npm install
    - bower install
-   - gulp
+   - node_modules/.bin/gulp
+
+
+after_success:
    - git config user.name "shippable"
    - git config user.email "urakozz@shippable.com"
    - git add -A
    - git commit -m "build"
-
-before_install:
-  - git remote -v | grep ^openshift || git remote add openshift $OPENSHIFT_REPO
-
-after_success:
-  - git push -f openshift $BRANCH:master
+   - git push -f openshift $BRANCH:master
