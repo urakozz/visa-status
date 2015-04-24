@@ -1,32 +1,32 @@
-language: php
-
-php:
- - 5.4
-
-env:
-  global:
-    - OPENSHIFT_REPO=ssh://55390582e0b8cd11060000ab@php-kozz.rhcloud.com/~/git/php.git/
-
-before_install:
-  - git remote -v | grep ^openshift || git remote add openshift $OPENSHIFT_REPO
-  - cat ~/.ssh/id_rsa.pub
-
-before_script:
-  - npm -v
-  - composer self-update
-  - composer install --no-interaction
-  - mkdir -p shippable/codecoverage
-  - mkdir -p shippable/testresults
-
-script: vendor/bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
-
-
-after_success:
-   - npm install
-   - bower install
-   - node_modules/.bin/gulp
-   - git config user.name "shippable"
-   - git config user.email "urakozz@shippable.com"
-   - git add -A
-   - git commit -m "build"
-   - git push -f openshift $BRANCH:master
+#language: php
+#
+#php:
+# - 5.4
+#
+#env:
+#  global:
+#    - OPENSHIFT_REPO=ssh://55390582e0b8cd11060000ab@php-kozz.rhcloud.com/~/git/php.git/
+#
+#before_install:
+#  - git remote -v | grep ^openshift || git remote add openshift $OPENSHIFT_REPO
+#  - cat ~/.ssh/id_rsa.pub
+#
+#before_script:
+#  - npm -v
+#  - composer self-update
+#  - composer install --no-interaction
+#  - mkdir -p shippable/codecoverage
+#  - mkdir -p shippable/testresults
+#
+#script: vendor/bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
+#
+#
+#after_success:
+#   - npm install
+#   - bower install
+#   - node_modules/.bin/gulp
+#   - git config user.name "shippable"
+#   - git config user.email "urakozz@shippable.com"
+#   - git add -A
+#   - git commit -m "build"
+#   - git push -f openshift $BRANCH:master

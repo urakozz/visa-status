@@ -9,9 +9,9 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 set -e
 
 echo 1>&2
-echo "Setting environment variables..." 1>&2
-
-
+echo "Updating composer" 1>&2
+composer install --no-dev --no-interaction
+echo 1>&2
 
 echo 1>&2
 echo "Migrating storage and log directories..." 1>&2
