@@ -3,6 +3,8 @@ sudo: true
 php:
   - 5.4
 before_script:
+  - node -v
+  - npm -v
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
   - sudo apt-get update;
   - sudo apt-get install gcc-4.8 g++-4.8;
@@ -23,6 +25,11 @@ matrix:
   - php: 5.4
   - php: 7.0
   fast_finish: true
+
+cache:
+  directories:
+    - node_modules
+    - vendor
 
 after_success:
    - node_modules/.bin/gulp
