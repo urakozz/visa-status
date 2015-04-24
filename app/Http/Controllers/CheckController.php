@@ -48,9 +48,8 @@ class CheckController extends Controller
             $result = new ResultContainer($e->getMessage(), $e->getCode());
         } catch (\DomainException $e) {
             $result = new ResultContainer($e->getMessage(), $e->getCode());
-        } finally {
-            $result->setId($id);
         }
+        $result->setId($id);
 
         return view('result', ['data' => $result]);
 
