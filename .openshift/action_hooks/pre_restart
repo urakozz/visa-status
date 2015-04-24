@@ -18,7 +18,7 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 set -e
 
 echo 1>&2
-echo "Setting environment variables..." 1>&2
+echo "pre restart script..." 1>&2
 
 
 

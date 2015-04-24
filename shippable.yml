@@ -14,15 +14,16 @@ before_install:
 before_script:
    - composer self-update
    - composer install --no-interaction
+   - mkdir -p shippable/codecoverage
+   - mkdir -p shippable/testresults
 
-script: vendor/bin/phpunit
+script: vendor/bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
 
-#after_script:
-#   - npm install
-#   - bower install
-#   - node_modules/.bin/gulp
 
 after_success:
+   - npm install
+   - bower install
+   - node_modules/.bin/gulp
    - git config user.name "shippable"
    - git config user.email "urakozz@shippable.com"
    - git add -A

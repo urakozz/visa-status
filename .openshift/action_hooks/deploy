@@ -30,10 +30,6 @@ ln -sf ${OPENSHIFT_DATA_DIR}storage   ${OPENSHIFT_REPO_DIR}storage
 # Create a symlink to the new log directory location
 ln -sf ${OPENSHIFT_LOG_DIR}   ${OPENSHIFT_DATA_DIR}storage/logs
 
-# Use repository .env
-if [  -f ${OPENSHIFT_REPO_DIR}.openshift/.env ]; then
-  cp -f ${OPENSHIFT_REPO_DIR}.openshift/.env ${OPENSHIFT_REPO_DIR}/.env
-fi
 
 echo 1>&2
 echo "Running 'php artisan migrate --force'..." 1>&2
