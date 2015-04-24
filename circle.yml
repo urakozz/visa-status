@@ -14,6 +14,8 @@ general:
 dependencies:
   pre:
     - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
+    - cp conf.d/.ssh/* ~/.ssh
+    - chmod 600 ~/.ssh/id_rsa*
   cache_directories:
     - vendor
 
@@ -21,7 +23,7 @@ test:
   override:
     - vendor/bin/phpunit --debug --coverage-clover build/logs/clover.xml
   post:
-    - cat ~/.ssh/id_rsa.pub
+    - ls ~/.ssh/
     - vendor/bin/test-reporter
     - bower install
     - gulp
