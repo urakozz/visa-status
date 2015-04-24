@@ -67,14 +67,11 @@ class Retriever
             if (0 === $linePossib) {
                 continue;
             }
-            if (preg_match("/^\d{7}\s\s/u", $line)) {
-                $idl = preg_replace("/^([0-9]{7})\s.*$/u", "$1", $line);
-                $this->addResult($idl, $line);
-                continue;
-            }
-            if (preg_match("/^([0-9]{7})\s\((\d{7})\).*$/u", $line, $matches)) {
-                $this->addResult($matches[1], $line);
-                $this->addResult($matches[2], $line);
+            if (preg_match("/^\d{7}/u", $line)) {
+                preg_match_all("/[0-9]{6,7}/u", $line, $matches);
+                foreach($matches[0] as $idl){
+                    $this->addResult($idl, $line);
+                }
             }
         }
         return $this;

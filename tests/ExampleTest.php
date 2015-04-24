@@ -11,9 +11,9 @@ class ExampleTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->cache = $this->getMockBuilder(Illuminate\Cache\CacheManager::class)
+        $this->cache = $this->getMockBuilder(Illuminate\Redis\Database::class)
             ->disableOriginalConstructor()
-            ->setMethods(['get', '__call'])
+            ->setMethods(['__call'])
             ->getMock();
         $this->cache->expects($this->any())->method('get')->willReturn(null);
 
@@ -78,7 +78,7 @@ class ExampleTest extends TestCase
     public function testCheckNotFound()
     {
         $this->cache->expects($this->any())->method('__call')->willReturnCallback(function ($method, array $args) {
-            if ('forever' === $method) {
+            if ('set' === $method) {
                 return;
             }
             if ('get' === $method) {

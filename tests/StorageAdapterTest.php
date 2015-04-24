@@ -26,9 +26,9 @@ class StorageAdapterTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->handler = $this->getMockBuilder(Illuminate\Cache\CacheManager::class)
+        $this->handler = $this->getMockBuilder(Illuminate\Redis\Database::class)
             ->disableOriginalConstructor()
-            ->setMethods(['get', '__call'])
+            ->setMethods(['__call'])
             ->getMock();
         $this->adapter = new \App\Components\StorageAdapter($this->handler);
 
@@ -38,7 +38,7 @@ class StorageAdapterTest extends TestCase
     {
         $cache = new ArrayObject();
         $this->handler->expects($this->any())->method('__call')->willReturnCallback(function ($name, array $args) use ($cache) {
-            if ('forever' === $name) {
+            if ('set' === $name) {
                 $cache[reset($args)] = end($args);
                 return true;
             }

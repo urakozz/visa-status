@@ -58,7 +58,7 @@ class RetrieverTest extends TestCase
         $this->guzzle->shouldReceive('get')->times(1)->andReturn(clone $this->responsePrototype);
         $results = $this->retriever->retrieve()->getResults();
         $this->assertNotEmpty($results);
-        $this->assertEquals(133, count($results));
+        $this->assertEquals(135, count($results));
         foreach ($results as $key => $line) {
             $this->assertContains((string) $key, $line);
         }
@@ -96,8 +96,8 @@ class RetrieverTest extends TestCase
         $result = $this->retriever->lookForId(1234567, true);
         $this->assertNull($result);
         $results = $this->retriever->getResults();
-        $this->assertEquals(133, count($results));
-        $this->assertEquals(133, $count);
+        $this->assertEquals(135, count($results));
+        $this->assertEquals(135, $count);
     }
 
 

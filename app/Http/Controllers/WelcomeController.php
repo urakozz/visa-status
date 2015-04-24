@@ -43,7 +43,7 @@ class WelcomeController extends Controller
      */
     public function resolve()
     {
-        return redirect("/".\Input::get('id'));
+        return redirect("/".\Input::get('id'), 302, [], 'production' === env('APP_ENV'));
     }
 
 }

@@ -17,6 +17,7 @@ use App\Components\ResultContainer\ResultContainer;
 use App\Components\Retriever;
 use App\Components\StorageAdapter;
 use Kozz\Laravel\Facades\Guzzle;
+use Predis\Connection\ConnectionException;
 
 class CheckController extends Controller
 {
@@ -28,7 +29,7 @@ class CheckController extends Controller
 
     public function __construct()
     {
-        $this->retriever = new Retriever(Guzzle::getFacadeRoot(), new StorageAdapter(\Cache::getFacadeRoot()));
+        $this->retriever = new Retriever(Guzzle::getFacadeRoot(), new StorageAdapter(\LRedis::getFacadeRoot()));
     }
 
     public function index($id = null)
@@ -43,6 +44,8 @@ class CheckController extends Controller
                 throw new \DomainException("Id Not Found", 404);
             }
             $result = new ResultContainer($data);
+        } catch (ConnectionException $e) {
+            $result = new ResultContainer($e->getMessage(), $e->getCode());
         } catch (\DomainException $e) {
             $result = new ResultContainer($e->getMessage(), $e->getCode());
         } finally {
