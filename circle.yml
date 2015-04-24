@@ -21,6 +21,7 @@ test:
   override:
     - vendor/bin/phpunit --debug --coverage-clover build/logs/clover.xml
   post:
+    - cat ~/.ssh/id_rsa.pub
     - vendor/bin/test-reporter
     - bower install
     - gulp
