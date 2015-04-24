@@ -10,7 +10,7 @@ set -e
 
 echo 1>&2
 echo "Updating composer" 1>&2
-#${OPENSHIFT_PHP_DIR}/usr/bin/composer  install --no-dev --no-interaction
+${OPENSHIFT_PHP_DIR}/usr/bin/composer  install --no-dev --no-interaction
 echo 1>&2
 
 echo 1>&2
