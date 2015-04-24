@@ -33,11 +33,13 @@ cache:
 
 after_success:
    - node_modules/.bin/gulp
-   - git config user.name "travis"
-   - git config user.email "urakozz@travis.com"
-   - git add -A
-   - git commit -m "travis build"
 
+before_deploy:
+   - git config --global user.email "travis@travis.org"
+   - git config --global user.name "Travis CI"
+   - git checkout $TRAVIS_BRANCH
+   - git add --all
+   - git commit -am "Travis change"
 deploy:
   provider: openshift
   user: urakozz@me.com
@@ -48,3 +50,4 @@ deploy:
   on:
     repo: urakozz/visa-status
   skip_cleanup: true
+  clean_up: false
