@@ -12,10 +12,12 @@ before_install:
   - cat ~/.ssh/id_rsa.pub
 
 before_script:
-   - composer self-update
-   - composer install --no-interaction
-   - mkdir -p shippable/codecoverage
-   - mkdir -p shippable/testresults
+  - sudo apt-get update
+  - sudo apt-get install npm
+  - composer self-update
+  - composer install --no-interaction
+  - mkdir -p shippable/codecoverage
+  - mkdir -p shippable/testresults
 
 script: vendor/bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
 
