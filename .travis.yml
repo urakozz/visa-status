@@ -1,12 +1,24 @@
 language: php
-sudo: false
+sudo: true
 php:
   - 5.4
 before_script:
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
+  - sudo apt-get update;
+  - sudo apt-get install gcc-4.8 g++-4.8;
+  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 20;
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 20;
+  - sudo g++ --version;
+  - sudo apt-get update -qq;
   - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then phpenv config-add .travis.php.ini; fi;'
   - composer self-update
   - composer install --no-interaction
+
 script: vendor/bin/phpunit
+after_script:
+  - npm install
+  - bower install
+
 matrix:
   allow_failures:
   - php: 5.4
@@ -14,8 +26,6 @@ matrix:
   fast_finish: true
 
 after_success:
-   - npm install
-   - bower install
    - node_modules/.bin/gulp
    - git config user.name "travis"
    - git config user.email "urakozz@travis.com"
