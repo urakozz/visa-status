@@ -11,11 +11,11 @@ set -e
 echo 1>&2
 echo "Updating composer" 1>&2
 if [ ! -f "$OPENSHIFT_DATA_DIR/composer.phar" ]; then
-    curl -s https://getcomposer.org/installer | /usr/bin/php -- --install-dir=$OPENSHIFT_DATA_DIR
+    curl -s https://getcomposer.org/installer | php -- --install-dir=$OPENSHIFT_DATA_DIR
 else
-    /usr/bin/php $OPENSHIFT_DATA_DIR/composer.phar self-update
+    php $OPENSHIFT_DATA_DIR/composer.phar self-update
 fi
-cd $OPENSHIFT_REPO_DIR && $OPENSHIFT_DATA_DIR/composer.phar install --no-dev
+cd $OPENSHIFT_REPO_DIR && php $OPENSHIFT_DATA_DIR/composer.phar install --no-dev
 
 echo 1>&2
 echo "Migrating storage and log directories..." 1>&2
