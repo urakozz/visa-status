@@ -17,7 +17,7 @@ class ExampleTest extends TestCase
             ->getMock();
         $this->cache->expects($this->any())->method('get')->willReturn(null);
 
-        \Illuminate\Container\Container::getInstance()->offsetSet('cache', $this->cache);
+        \Illuminate\Container\Container::getInstance()->offsetSet('redis', $this->cache);
         $guzzle = \Mockery::mock(\GuzzleHttp\Client::class . '[get]');
         \Illuminate\Container\Container::getInstance()->offsetSet('guzzle', $guzzle);
     }

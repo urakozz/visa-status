@@ -7,8 +7,5 @@
     "laravel-elixir": "*",
     "bower": "*",
     "gulp-sass":"*"
-  },
-  "scripts":{
-    "postinstall":"npm prune && npm shrinkwrap --dev"
   }
 }
