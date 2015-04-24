@@ -14,8 +14,6 @@ general:
 dependencies:
   pre:
     - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
-    - cp conf.d/.ssh/* ~/.ssh
-    - chmod 600 ~/.ssh/id_rsa*
   cache_directories:
     - vendor
 
