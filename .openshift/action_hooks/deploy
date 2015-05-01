@@ -29,10 +29,10 @@ if [ ! -d ${OPENSHIFT_DATA_DIR}storage ]; then
 fi
 
 # Create symlink to new storage directory location
-ln -sf ${OPENSHIFT_DATA_DIR}storage   ${OPENSHIFT_REPO_DIR}storage
+#ln -sf ${OPENSHIFT_DATA_DIR}storage   ${OPENSHIFT_REPO_DIR}storage
 
 # Create a symlink to the new log directory location
-ln -sf ${OPENSHIFT_LOG_DIR}   ${OPENSHIFT_DATA_DIR}storage/logs
+#ln -sf ${OPENSHIFT_LOG_DIR}   ${OPENSHIFT_DATA_DIR}storage/logs
 
 
 echo 1>&2

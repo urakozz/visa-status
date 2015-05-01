@@ -1,1 +1,4 @@
-php artisan schedule:run 1>> /dev/null 2>&1
+#!/bin/bash
+date >> ${OPENSHIFT_PHP_LOG_DIR}/ticktock.log
+
+#php artisan schedule:run 1>> /dev/null 2>&1
