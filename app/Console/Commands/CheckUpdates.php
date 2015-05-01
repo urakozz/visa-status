@@ -34,7 +34,7 @@ class CheckUpdates extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->retriever = new Retriever(Guzzle::getFacadeRoot(), new StorageAdapter(\Cache::getFacadeRoot()));
+        $this->retriever = new Retriever(Guzzle::getFacadeRoot(), new StorageAdapter(\LRedis::getFacadeRoot()));
     }
 
     /**
