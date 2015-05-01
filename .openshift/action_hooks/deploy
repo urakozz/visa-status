@@ -33,8 +33,7 @@ echo 1>&2
 
 # Create a symlink to the new log directory location
 #ln -sf ${OPENSHIFT_LOG_DIR}   ${OPENSHIFT_DATA_DIR}storage/logs
-unlink ${OPENSHIFT_LOG_DIR}
-mkdir ${OPENSHIFT_LOG_DIR}
+unlink ${OPENSHIFT_LOG_DIR}/logs
 echo ${OPENSHIFT_DATA_DIR}
 echo ${OPENSHIFT_REPO_DIR}
 
