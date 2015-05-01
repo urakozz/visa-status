@@ -48,7 +48,6 @@ class CheckUpdates extends Command
         $results = count($this->retriever->getResults());
         $test    = date("Y-m-d H:i:s") . " - Got " . $results . " results\n";
         $this->comment($test);
-        file_put_contents("tmp.log", $test, FILE_APPEND);
     }
 
     /**
