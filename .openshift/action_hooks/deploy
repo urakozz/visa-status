@@ -23,16 +23,21 @@ echo 1>&2
 # If this is initial installation, copy the default storage directory
 # from official Laravel installation and remove the log directory
 #
-if [ ! -d ${OPENSHIFT_DATA_DIR}storage ]; then
-  mv ${OPENSHIFT_REPO_DIR}storage ${OPENSHIFT_DATA_DIR}storage
-  rm -rf ${OPENSHIFT_DATA_DIR}storage/logs
-fi
+#if [ ! -d ${OPENSHIFT_DATA_DIR}storage ]; then
+#  mv ${OPENSHIFT_REPO_DIR}storage ${OPENSHIFT_DATA_DIR}storage
+#  rm -rf ${OPENSHIFT_DATA_DIR}storage/logs
+#fi
 
 # Create symlink to new storage directory location
 #ln -sf ${OPENSHIFT_DATA_DIR}storage   ${OPENSHIFT_REPO_DIR}storage
 
 # Create a symlink to the new log directory location
 #ln -sf ${OPENSHIFT_LOG_DIR}   ${OPENSHIFT_DATA_DIR}storage/logs
+unlink ${OPENSHIFT_LOG_DIR}
+mkdir ${OPENSHIFT_LOG_DIR}
+echo ${OPENSHIFT_DATA_DIR}
+echo ${OPENSHIFT_REPO_DIR}
+
 
 
 echo 1>&2
