@@ -44,6 +44,7 @@ class ExampleTest extends TestCase
         $response = $this->call('GET', '/asd');
 
         $this->assertEquals(404, $response->getStatusCode());
+        $this->assertContains("Invalid page", $response->getContent());
 
         $response = $this->call('GET', '/000');
 
