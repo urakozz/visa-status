@@ -5,6 +5,10 @@
 [![Code Climate](https://codeclimate.com/github/urakozz/visa-status/badges/gpa.svg)](https://codeclimate.com/github/urakozz/visa-status)
 [![Test Coverage](https://codeclimate.com/github/urakozz/visa-status/badges/coverage.svg)](https://codeclimate.com/github/urakozz/visa-status)
 
+## Check it out
+
+[http://visa-status.herokuapp.com](http://visa-status.herokuapp.com)
+
 ## Installation
 
 ```
