@@ -6,7 +6,7 @@
 	"type": "project",
 	"require": {
 		"php": "~5.4|~7.0",
-		"laravel/framework": "~5.0.0",
+		"laravel/framework": "~5.1.0",
 		"illuminate/html":"*",
 		"kozz/laravel-guzzle-provider": "~1.0",
 		"predis/predis":"~1.0",
